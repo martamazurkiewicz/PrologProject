@@ -7,3 +7,6 @@ delete1(X,[Y|Tail],[Y|L1]):-delete1(X,Tail,L1).
 
 len1([],zero).
 len1([_|Tail],s(X)):-len1(Tail,X).
+
+sum1([],0).
+sum1([Head|Tail],N):-sum1(Tail,Q),N is Q+Head.
