@@ -21,3 +21,8 @@ count1(X,[Head|Tail],N):-not(X=Head),count1(X,Tail,N).
 
 double1([],[]).
 double1([Head|L1Tail],[Head|[Head|L2Tail]]):-double1(L1Tail,L2Tail).
+
+rlen([],0).
+rlen([Head|Tail],X):-atom(Head),rlen(Tail,Q),X is Q+1.
+rlen([Head|Tail],X):-rlen(Head,R),rlen(Tail,Q),X is Q+R.
+%rlen dziala dla liter i wyrazow, nie dla cyfr i liczb
