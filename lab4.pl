@@ -18,3 +18,6 @@ avg1(L1,N):-sum1(L1,Sum),lenNum(L1,Len),N is Sum//Len.
 count1(_,[],0).
 count1(X,[X|Tail],N):-count1(X,Tail,Q),N is Q+1.
 count1(X,[Head|Tail],N):-not(X=Head),count1(X,Tail,N).
+
+double1([],[]).
+double1([Head|L1Tail],[Head|[Head|L2Tail]]):-double1(L1Tail,L2Tail).
