@@ -8,6 +8,12 @@ delete1(X,[Y|Tail],[Y|L1]):-delete1(X,Tail,L1).
 len1([],zero).
 len1([_|Tail],s(X)):-len1(Tail,X).
 
+reverse([],[]).
+reverse([Head|Tail],L2):-reverse(Tail,L1),concat1(L1,[Head],L2).
+
+reverse2([Head|Tail],Accumulator,L3):-reverse2(Tail,[Head|Accumulator],L3).
+reverse2([],Accumulator,Accumulator).
+
 sum1([],0).
 sum1([Head|Tail],N):-sum1(Tail,Q),N is Q+Head.
 
