@@ -31,3 +31,9 @@ glue(What, ListIn, ListOut, N):-
     Q is N-1, 
     concat1([What], ListIn, ListInAppended),
     glue(What,ListInAppended,ListOut,Q).
+	
+repeat([],[],_):-!.
+repeat([HeadToRep|TailToRep],ListOut,N):-
+	glue(HeadToRep,[],ListAppended,N),
+    concat1(ListAppended,ListIn,ListOut),
+    repeat(TailToRep,ListIn,N).
