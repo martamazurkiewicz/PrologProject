@@ -27,9 +27,9 @@ times(zero,X,zero) :- isnumber(X).
 times(s(X),Y,Z) :- times(X, Y, Q), add(Y, Q, Z).
 
 quotient(_,zero,nan):-!.
+quotient(X,X,s(zero)):-isnumber(X), !.
 quotient(zero,X,zero):-isnumber(X), !.
-quotient(X,X,s(zero)):-isnumber(X).
-quotient(X,Y,s(Z)) :- quotient(Q,Y,Z), add(Y,Q,X), !.
+quotient(X,Y,s(Z)) :- quotient(Q,Y,Z), add(Q,Y,X), !.
 
 remainder(zero,_,zero).
 remainder(X,X,zero).
