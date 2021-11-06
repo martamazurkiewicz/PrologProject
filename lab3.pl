@@ -26,7 +26,9 @@ odd(s(s(X))):-odd(X).
 times(zero,X,zero) :- isnumber(X).
 times(s(X),Y,Z) :- times(X, Y, Q), add(Y, Q, Z).
 
-quotient(X,X,s(zero)).
+quotient(_,zero,nan):-!.
+quotient(zero,X,zero):-isnumber(X), !.
+quotient(X,X,s(zero)):-isnumber(X).
 quotient(X,Y,s(Z)) :- quotient(Q,Y,Z), add(Y,Q,X), !.
 
 remainder(zero,_,zero).
