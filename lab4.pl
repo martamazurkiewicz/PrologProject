@@ -49,3 +49,12 @@ sort1([_]):-!.
 sort1([Head,HeadOfTail|Tail]):-
     Head=<HeadOfTail,
     sort1([HeadOfTail|Tail]).
+
+permutation([],[]).
+permutation([Head|Tail],ListOut):-
+    permutation(Tail,LTmp),
+    delete1(Head,ListOut,LTmp).
+
+naivesort(ListIn,ListOut):-
+    permutation(ListIn,ListOut),
+    sort1(ListOut),!.
