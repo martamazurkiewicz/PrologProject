@@ -43,3 +43,9 @@ repeat([HeadToRep|TailToRep],ListOut,N):-
 	glue(HeadToRep,[],ListAppended,N),
     concat1(ListAppended,ListIn,ListOut),
     repeat(TailToRep,ListIn,N).
+	
+sort1([]).
+sort1([_]):-!.
+sort1([Head,HeadOfTail|Tail]):-
+    Head=<HeadOfTail,
+    sort1([HeadOfTail|Tail]).
