@@ -26,3 +26,9 @@ rlen([],0).
 rlen([Head|Tail],X):-atom(Head),rlen(Tail,Q),X is Q+1.
 rlen([Head|Tail],X):-rlen(Head,R),rlen(Tail,Q),X is Q+R.
 %rlen dziala dla liter i wyrazow, nie dla cyfr i liczb
+
+glue(What,ListIn,[What|ListIn],1):-!.
+glue(What, ListIn, ListOut, N):-
+    Q is N-1, 
+    concat1([What], ListIn, ListInAppended),
+    glue(What,ListInAppended,ListOut,Q).
