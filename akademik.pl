@@ -1,7 +1,3 @@
-%student(Imie,MomentDnia,Czynnosc).
-% U-1,V-2,W-3,X-4,Y-5,Z-6
-%order(U,V,W,X,Y,Z).
-
 above(X,Y,order(X,_,Y,_,_,_)).
 above(X,Y,order(X,_,_,_,Y,_)).
 above(X,Y,order(_,X,_,Y,_,_)).
@@ -20,7 +16,6 @@ floorAbove(X,Y,order(_,_,X,_,Y,_)).
 floorAbove(X,Y,order(_,_,X,_,_,Y)).
 floorAbove(X,Y,order(_,_,_,X,Y,_)).
 floorAbove(X,Y,order(_,_,_,X,_,Y)).
-% X is below Y
 below(X,Y,order(Y,_,X,_,_,_)).
 below(X,Y,order(Y,_,_,_,X,_)).
 below(X,Y,order(_,Y,_,X,_,_)).
@@ -47,11 +42,8 @@ nextTo(Y,X,order(_,_,X,Y,_,_)).
 nextTo(Y,X,order(_,_,_,_,X,Y)).
 groundF(X,order(_,_,_,_,X,_)).
 groundF(X,order(_,_,_,_,_,X)).
-%firstF(X,order(_,_,X,_,_,_)).
-%firstF(X,order(_,_,_,X,_,_)).
 secondF(X,order(X,_,_,_,_,_)).
 secondF(X,order(_,X,_,_,_,_)).
-%X is left from Y
 left(X,Y,order(X,Y,_,_,_,_)).
 left(X,Y,order(_,_,X,Y,_,_)).
 left(X,Y,order(_,_,_,_,X,Y)).
@@ -85,5 +77,11 @@ odpowiedz1(S):-clue1(S),clue2(S),clue3(S),clue4(S),
     clue9(S),clue10(S),clue11(S),clue12(S),
     clue13(S),clue14(S),clue15(S),!.
 
-%odpowiedz2(Kto,Kiedy):-student(Kto,Kiedy,gra).
+odpowiedz2(Kto,Kiedy):-odpowiedz1(order(student(Kto,Kiedy,gra),_,_,_,_,_)),!.
+odpowiedz2(Kto,Kiedy):-odpowiedz1(order(_,student(Kto,Kiedy,gra),_,_,_,_)),!.
+odpowiedz2(Kto,Kiedy):-odpowiedz1(order(_,_,student(Kto,Kiedy,gra),_,_,_)),!.
+odpowiedz2(Kto,Kiedy):-odpowiedz1(order(_,_,_,student(Kto,Kiedy,gra),_,_)),!.
+odpowiedz2(Kto,Kiedy):-odpowiedz1(order(_,_,_,_,student(Kto,Kiedy,gra),_)),!.
+odpowiedz2(Kto,Kiedy):-odpowiedz1(order(_,_,_,_,_,student(Kto,Kiedy,gra))),!.
+
 odpowiedz3(S3,S4,S5):-odpowiedz1(order(_,_,S3,S4,S5,_)).
