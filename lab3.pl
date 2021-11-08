@@ -8,7 +8,7 @@ isnumber(zero).
 isnumber(s(X)):-isnumber(X).
 
 % With this definition we define some standard predicates on our set of numbers
-isequal(X,X):-isnumber(X).
+isequal(X,X):-isnumber(X),!.
 isequal(s(X),s(Y)):-isequal(X,Y).
 
 lessthanequal(zero,X):-isnumber(X).
