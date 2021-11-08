@@ -5,8 +5,9 @@ concat1([Head|Tail],X,[Head|Y]) :- concat1(Tail,X,Y).
 delete1(Head,[Head|Tail],Tail).
 delete1(X,[Y|Tail],[Y|L1]):-delete1(X,Tail,L1).
 
-len1([],zero).
-len1([_|Tail],s(X)):-len1(Tail,X).
+len1(X,L):-len1(X,0,L).
+len1([],L,L).
+len1([_|X],T,L):-T1 is T+1,len1(X,T1,L).
 
 reverse1([],[]).
 reverse1([Head|Tail],L2):-reverse1(Tail,L1),concat1(L1,[Head],L2).
