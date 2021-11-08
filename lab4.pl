@@ -19,6 +19,7 @@ sum1([Head|Tail],N):-sum1(Tail,Q),N is Q+Head.
 
 lenNum([],0).
 lenNum([_|Tail],X):-lenNum(Tail,Q),X is Q+1.
+avg1([],0):-!.
 avg1(L1,N):-sum1(L1,Sum),lenNum(L1,Len),N is Sum//Len.
 
 count1(_,[],0).
