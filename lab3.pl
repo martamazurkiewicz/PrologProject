@@ -37,7 +37,7 @@ remainder(X,Y,R) :- lessthanequal(X,Y),R=X.
 remainder(X,Y,R) :- add(Y,Q, X), remainder(Q,Y,R).
 
 fact(zero,s(zero)).
-fact(s(N),X) :- fact(N,Q), quotient(X,s(N),Q).
+fact(s(N),X) :- fact(N,Q), times(s(N),Q,X).
 
 fibonacci(zero,zero).
 fibonacci(s(zero),s(zero)).
