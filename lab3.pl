@@ -30,9 +30,10 @@ times(zero,X,zero) :- isnumber(X).
 times(s(X),Y,Z) :- times(X, Y, Q), add(Y, Q, Z).
 
 quotient(_,zero,nan):-!.
-quotient(X,X,s(zero)):-isnumber(X), !.
+quotient(X,s(zero),X):-isnumber(X), !.
 quotient(zero,X,zero):-isnumber(X), !.
-quotient(X,Y,s(Z)) :- quotient(Q,Y,Z), add(Q,Y,X), !.
+quotient(X,X,s(zero)):-isnumber(X), !.
+quotient(X,Y,s(Z)) :- add(Q,Y,X), quotient(Q,Y,Z), !.
 
 remainder(_,zero,nan):-!.
 remainder(X,Y,X):-lessthan(X,Y), !.
