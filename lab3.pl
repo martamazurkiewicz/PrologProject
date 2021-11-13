@@ -14,6 +14,9 @@ isequal(s(X),s(Y)):-isequal(X,Y).
 lessthanequal(zero,X):-isnumber(X).
 lessthanequal(s(X),s(Y)):-lessthanequal(X,Y).
 
+lessthan(zero,s(X)):-isnumber(X).
+lessthan(s(X),s(Y)):-lessthan(X,Y).
+
 add(zero,X,X):-isnumber(X).
 add(s(X),Y,s(Z)):-add(X,Y,Z).
 
@@ -31,10 +34,7 @@ quotient(X,X,s(zero)):-isnumber(X), !.
 quotient(zero,X,zero):-isnumber(X), !.
 quotient(X,Y,s(Z)) :- quotient(Q,Y,Z), add(Q,Y,X), !.
 
-remainder(zero,_,zero).
-remainder(X,X,zero).
-remainder(X,Y,R) :- lessthanequal(X,Y),R=X.
-remainder(X,Y,R) :- add(Y,Q, X), remainder(Q,Y,R).
+remainder(X,Y,X):-lessthan(X,Y).
 
 fact(zero,s(zero)).
 fact(s(N),X) :- fact(N,Q), times(s(N),Q,X).
