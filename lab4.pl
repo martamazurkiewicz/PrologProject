@@ -30,8 +30,8 @@ count1(X,[Head|Tail],N):-not(X=Head),count1(X,Tail,N).
 double1([],[]).
 double1([Head|L1Tail],[Head|[Head|L2Tail]]):-double1(L1Tail,L2Tail).
 
-rlen([Head|Tail],X):-rlen(Head,R),rlen(Tail,Q),X is Q+R,!.
-rlen([],0):-!.
+rlen([Head|Tail],X):-!,rlen(Head,R),rlen(Tail,Q),X is Q+R,!.
+rlen([],N):-!,N is 0.
 rlen(_,1):-!.
 
 glue(What,ListIn,[What|ListIn],1):-!.
