@@ -43,7 +43,7 @@ fact(s(N),X) :- fact(N,Q), times(s(N),Q,X).
 
 fibonacci(zero,zero).
 fibonacci(s(zero),s(zero)).
-fibonacci(s(s(N)),X) :- fibonacci(s(N),Q), fibonacci(N,P), add(Q,P,X).
+fibonacci(s(s(N)),X) :- fibonacci(s(N),Q), fibonacci(N,P), !, add(Q,P,X).
 
 shownum(zero,0).
 shownum(s(X),N) :- shownum(X,Y), N is Y + 1.
