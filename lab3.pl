@@ -34,7 +34,9 @@ quotient(X,X,s(zero)):-isnumber(X), !.
 quotient(zero,X,zero):-isnumber(X), !.
 quotient(X,Y,s(Z)) :- quotient(Q,Y,Z), add(Q,Y,X), !.
 
-remainder(X,Y,X):-lessthan(X,Y).
+remainder(_,zero,nan):-!.
+remainder(X,Y,X):-lessthan(X,Y), !.
+remainder(X,Y,Z):- add(Q,Y,X), remainder(Q,Y,Z), !.
 
 fact(zero,s(zero)).
 fact(s(N),X) :- fact(N,Q), times(s(N),Q,X).
