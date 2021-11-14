@@ -31,7 +31,7 @@ move(X,6,7,s(X1,X2,X3,X4,X5,X,e),s(X1,X2,X3,X4,X5,e,X)).
 %init
 play(Player,StartPosition,EndGamePosition,States):-play(Player,StartPosition,EndGamePosition,[],States).
 %game over condition
-play(_,EndGamePosition,EndGamePosition,_,[]):-!.
+play(_,EndGamePosition,EndGamePosition,_,[EndGamePosition]):-!.
 %game playing conditions
 %player denotes the player making a move (either black or white)
 %StartPosition denotes for every move the current board state
