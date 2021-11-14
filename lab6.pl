@@ -28,6 +28,9 @@ move(X,6,2,s(X1,e,X3,X4,X5,X,X7),s(X1,X,X3,X4,X5,e,X7)).
 move(X,6,4,s(X1,X2,X3,e,X5,X,X7),s(X1,X2,X3,X,X5,e,X7)).
 move(X,6,7,s(X1,X2,X3,X4,X5,X,e),s(X1,X2,X3,X4,X5,e,X)).
 
+move(X,7,5,s(X1,X2,X3,X4,e,X6,X),s(X1,X2,X3,X4,X,X6,e)).
+move(X,7,6,s(X1,X2,X3,X4,X5,e,X),s(X1,X2,X3,X4,X5,X,e)).
+
 %init
 play(Player,StartPosition,EndGamePosition,States):-play(Player,StartPosition,EndGamePosition,[],States).
 %game over condition
