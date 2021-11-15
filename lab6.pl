@@ -32,17 +32,18 @@ move(X,7,5,s(X1,X2,X3,X4,e,X6,X),s(X1,X2,X3,X4,X,X6,e)).
 move(X,7,6,s(X1,X2,X3,X4,X5,e,X),s(X1,X2,X3,X4,X5,X,e)).
 
 %init
-play(Player,StartPosition,EndGamePosition,States):-play(Player,StartPosition,EndGamePosition,[StartPosition],States).
+play(Player,StartPosition,EndGamePosition,States, Moves):-play(Player,StartPosition,EndGamePosition,[StartPosition],Moves,States).
 %game over condition
-play(_,EndGamePosition,EndGamePosition,_,[EndGamePosition]):-!.
+play(_,EndGamePosition,EndGamePosition,_,[],[EndGamePosition]):-!.
 %game playing conditions
 %player denotes the player making a move (either black or white)
 %StartPosition denotes for every move the current board state
 %EndGamePosition denotes the desired outcome position
 %States is a list of all intermediary board states
 
-play(Player, StartPosition, EndGamePosition, States, [StartPosition|NextPositions]):-
-    move(Player,_,_,StartPosition,EP),
+play(Player, StartPosition, EndGamePosition, States, [Move|NextMoves], [StartPosition|NextPositions]):-
+    move(Player,X,Y,StartPosition,EP),
+    Move=[Player,X,Y],
     next_player(Player, NextPlayer),
     not(member(EP,States)),
-    play(NextPlayer, EP, EndGamePosition, [EP|States], NextPositions).
+    play(NextPlayer, EP, EndGamePosition, [EP|States], NextMoves, NextPositions).
