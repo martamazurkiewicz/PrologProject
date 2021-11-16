@@ -8,6 +8,7 @@ member(X,[_|T]):-member(X,T).
 move(X,1,2,s(X,e,X3,X4,X5,X6,X7),s(e,X,X3,X4,X5,X6,X7)).
 move(X,1,3,s(X,X2,e,X4,X5,X6,X7),s(e,X2,X,X4,X5,X6,X7)).
 
+move(X,2,1,s(e,X,X3,X4,X5,X6,X7),s(X,e,X3,X4,X5,X6,X7)).
 move(X,2,4,s(X1,X,X3,e,X5,X6,X7),s(X1,e,X3,X,X5,X6,X7)).
 move(X,2,6,s(X1,X,X3,X4,X5,e,X7),s(X1,e,X3,X4,X5,X,X7)).
 
