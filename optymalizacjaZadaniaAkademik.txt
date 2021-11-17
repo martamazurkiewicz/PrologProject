@@ -1,5 +1,0 @@
-Tlumaczenie dot. optymalizacji zadania Akademik
-Dalsze zagniezdzanie typu leftCol, rightCol nie ma sensu poniewaz znaczaco wydluza zasoby potrzebne do znalezienia odpowiedzi (CPU) i wydluza czas oczekiwania o 1-2s.
-leftCol(X,order(X,_,_,_,_,_)).
-leftCol(X,order(_,_,X,_,_,_)).
-leftCol(X,order(_,_,_,_,X,_)).
